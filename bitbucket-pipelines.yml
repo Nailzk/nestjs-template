@@ -1,0 +1,41 @@
+image: docker:19.03.8-dind
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          services:
+            - docker
+          name: Build latest
+          script:
+            - apk update
+            - apk add make
+            - make -v
+            - make build
+            - make login
+            - make deploy
+    master:
+      - step:
+          services:
+            - docker
+          name: Build latest
+          script:
+            - apk update
+            - apk add make
+            - make -v
+            - make build
+            - make login
+            - make deploy
+  custom:
+    build&deploy:
+      - step:
+          services:
+            - docker
+          name: Build and deploy latest version
+          script:
+            - apk update
+            - apk add make
+            - make -v
+            - make build
+            - make login
+            - make deploy

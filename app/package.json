@@ -1,0 +1,28 @@
+{
+    "Should copied from root": {},
+    "___scripts": {
+        "start": "node main.js",
+        "db:sync": "npx ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js schema:sync -f=ormconfig.js",
+        "db:drop": "npx ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js schema:drop -f=ormconfig.js",
+        "db:seeds": "npx ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:run -f=ormconfig.js",
+        "db:prepare": "npm run db:drop:typeorm && npm run db:sync:typeorm && npm run db:seeds:typeorm"
+    },
+    "__dependencies": {
+        "@nestjs/common": "6.11.5",
+        "@nestjs/core": "6.11.5",
+        "@nestjs/platform-express": "6.11.5",
+        "@nestjs/swagger": "4.0.9",
+        "@nestjs/typeorm": "6.2.0",
+        "@nestjsx/crud": "4.4.1",
+        "@nestjsx/crud-typeorm": "4.4.1",
+        "dotenv": "8.2.0",
+        "reflect-metadata": "0.1.13",
+        "rimraf": "3.0.1",
+        "typeorm": "0.2.19",
+        "rxjs": "6.5.4",
+        "class-transformer": "0.2.3",
+        "class-validator": "0.10.0",
+        "pg": "7.12.1",
+        "typeorm-naming-strategies": "1.1.0"
+    }
+}
