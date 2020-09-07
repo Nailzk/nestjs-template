@@ -1,4 +1,4 @@
-image: teracy/angular-cli
+image: nestjs/cli:latest
 
 stages:
   - install
@@ -18,7 +18,7 @@ install:
   script:
     - npm i
 
-build-web-ssr:
+build:
   stage: build
   tags:
     - docker
@@ -41,8 +41,6 @@ deploy:
   cache:
     paths:
       - app/
-  only:
-    - charts
   script:
     - CONTAINER_IMAGE="$CI_REGISTRY/$CI_PROJECT_PATH"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
