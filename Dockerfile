@@ -1,19 +1,12 @@
-FROM nestjs/cli:latest AS builder
-WORKDIR /app
-COPY . .
-RUN apk add git && \
-        npm i && \
-        npm run build && \
-        ls -la
-
-FROM node:12.16.3-alpine AS runner
-WORKDIR /app
-COPY --from=builder /app/dist ./
+FROM node:12.16.3-alpine
+COPY /dist ./
 COPY /package.json ./
+COPY /package-lock.json ./
+COPY /.env ./
 RUN apk add git && \
-        npm i -g typescript && \
+        npm i -g typescript@3.8.3 && \
         tsc -v && \
         npm i && \
         #npm i --production && \
-         ls -la
+        ls -la
 CMD ["node", "main.js"]

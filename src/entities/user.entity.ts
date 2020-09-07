@@ -8,7 +8,7 @@ const { CREATE, UPDATE } = CrudValidationGroups;
 
 // tslint:disable-next-line:max-classes-per-file
 @Entity('users')
-@ContainsId
+@ContainsId()
 export class User {
   @ApiProperty()
   @IsOptional({ groups: [UPDATE] })
