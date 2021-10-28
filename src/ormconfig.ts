@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 import { join } from 'path';
 
 dotenv.config();
-const env: any = process.env;
+const env: { [key: string]: string | boolean } = process.env;
 
 /**
  * we use defaults values for loccal (development) envirionment 
