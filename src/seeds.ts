@@ -1,8 +1,8 @@
-import { MigrationInterface, QueryRunner, getRepository } from 'typeorm';
+import { getRepository, MigrationInterface } from 'typeorm';
 import { User } from './entities/user.entity';
 
 export class Seeds1544303473346 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  public async up(): Promise<User> {
     const repo = getRepository(User);
     return repo.save({
       email: 'admon@admon.com',
@@ -11,5 +11,7 @@ export class Seeds1544303473346 implements MigrationInterface {
     });
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> { }
+  public async down(): Promise<User> { 
+    return
+  }
 }
