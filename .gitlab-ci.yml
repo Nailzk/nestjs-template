@@ -34,6 +34,7 @@ build:
   script:
     - apk add git
     - npm i
+    - npm run lint
     - npm run pack
 
 deploy:
